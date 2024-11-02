@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"net/http"
+
+	"github.com/google/go-github/v63/github"
 )
 
 // 간단한 핸들러 함수
@@ -11,7 +13,8 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	// "/hello" 경로에 대한 요청을 helloHandler로 처리
+	github.NewClient(http.DefaultClient)
+	// "/hello" 경로에 대한 요청을 helloHandler로 	처리
 	http.HandleFunc("/hello", helloHandler)
 
 	// 서버 시작
